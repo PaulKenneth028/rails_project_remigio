@@ -1,0 +1,2 @@
+module MyBloggingWebsitesHelper
+end

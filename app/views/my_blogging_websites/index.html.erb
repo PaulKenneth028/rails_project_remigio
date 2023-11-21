@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>My blogging websites</h1>
+
+<div id="my_blogging_websites">
+  <% @my_blogging_websites.each do |my_blogging_website| %>
+    <%= render my_blogging_website %>
+    <p>
+      <%= link_to "Show this my blogging website", my_blogging_website %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New my blogging website", new_my_blogging_website_path %>

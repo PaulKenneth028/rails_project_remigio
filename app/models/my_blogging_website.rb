@@ -1,0 +1,2 @@
+class MyBloggingWebsite < ApplicationRecord
+end
