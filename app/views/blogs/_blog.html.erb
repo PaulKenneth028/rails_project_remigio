@@ -1,11 +1,29 @@
+
+
+
 <div id="<%= dom_id blog %>">
   <p>
-    <strong>Title:</strong><br>
+    <strong id="blogtitle">Title:</strong><br>
     <%= blog.title %>
   </p>
 
   <p>
-    <strong>Body:</strong><br>
+    <strong id="blogbody">Body:</strong><br>
     <%= blog.body %>
   </p>
 </div>
+
+
+<style> 
+#blogtitle {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+#<%= dom_id blog %> {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  font-size: 20px;
+}
+</style>

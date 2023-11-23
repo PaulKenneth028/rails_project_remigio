@@ -1,6 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<style>
 
-<h1>Blogs</h1>
+#blogshead {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  background-color: green;
+  color: white;
+}
+
+</style>
+
+<p><%= notice %></p>
+
+<h1 id="blogshead">Blogs</h1>
 
 <div id="blogs">
   <% @blogs.each do |blog| %>
