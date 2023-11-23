@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs = Blog.order(created_at: :desc)
   end
 
   # GET /blogs/1 or /blogs/1.json
@@ -22,38 +22,31 @@ class BlogsController < ApplicationController
   # POST /blogs or /blogs.json
   def create
     @blog = Blog.new(blog_params)
-
-    respond_to do |format|
-      if @blog.save
-        format.html { redirect_to blog_url(@blog), notice: "Blog was successfully created." }
-        format.json { render :show, status: :created, location: @blog }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
+    if @blog.save
+      redirect_to blogs_path
     end
   end
 
   # PATCH/PUT /blogs/1 or /blogs/1.json
   def update
-    respond_to do |format|
-      if @blog.update(blog_params)
-        format.html { redirect_to blog_url(@blog), notice: "Blog was successfully updated." }
-        format.json { render :show, status: :ok, location: @blog }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
+    @blog = Blog.find(params[:id])
+  
+    if @blog.update(blog_params)
+      redirect_to blog_path(@blog), notice: "Blog was successfully updated."
+    else
+      # render the edit form again with errors
+      render :edit
     end
   end
 
   # DELETE /blogs/1 or /blogs/1.json
   def destroy
-    @blog.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
-      format.json { head :no_content }
+    @blog = Blog.where(id: params[:id]).first
+    
+    if @blog.destroy
+    redirect_to blogs_path
+    else
+      
     end
   end
 
