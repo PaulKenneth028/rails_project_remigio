@@ -60,7 +60,6 @@ group :development do
   # gem "spring"
 
   gem 'bootstrap', '~> 5.1.3'
-
 end
 
 group :test do
